@@ -4,6 +4,7 @@ class CreateTests < ActiveRecord::Migration[6.0]
       t.text :title
       t.text :questions
       t.integer :course_id
+      t.integer :user_id
 
       t.timestamps
     end
