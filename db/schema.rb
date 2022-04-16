@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_04_16_212000) do
 
   create_table "tests", force: :cascade do |t|
     t.text "title"
-    t.text "questions"
+    t.text "questions", default: [], array: true
     t.integer "course_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
