@@ -41,7 +41,7 @@ class TestsController < ApplicationController
     private 
 
     def find_test
-        @test = Test.find(params[:test_id])
+        @test = Test.friendly.find(params[:test_id])
     end
 
     def test_params
