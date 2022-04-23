@@ -12,5 +12,9 @@ Rails.application.routes.draw do
     resources :tests
   end
 
-  # root 'sessions#login'
+  get 'sign-up', to: 'sessions#sign_up'
+  get 'login', to: 'sessions#login'
+  get 'logout', to: 'sessions#logout'
+
+  root 'sessions#login'
 end
