@@ -1,17 +1,15 @@
 class SessionsController < ApplicationController
-    
-    def sign_up
-        @user = User.new
-    end
 
     def login
-        @user = User.find_by(email: params[:email])
+    end
+
+    def create
+        @user = User.find_by_email(params[:email])
+
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            flash[:notice] = 'You have successfully logged in!'
             redirect_to user_path(@user)
         else
-            flash[:warning] = @user.errors.messages
             render :login
         end
     end
