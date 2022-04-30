@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action: find_user, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, only: [:show, :edit, :update, :destroy]
 
     def index
         @user = User.all
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :grade, :gpa, :course_id)
+        params.require(:user).permit(:first_name, :last_name, :email, :password_digest, :grade, :gpa, :course_id)
     end
 end
