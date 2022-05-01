@@ -1,0 +1,6 @@
+<%= form_for :test, method: :post, url: tests_path do |f| %>
+    <%= f.hidden_field :course_id, value: @course.id %><br/>
+    <%= f.hidden_field :user_id, value: current_user.id %><br/>
+    <%= f.text_field :title, placeholder: "Enter Test title" %><br/>
+    <%= f.submit %>
+<% end %>

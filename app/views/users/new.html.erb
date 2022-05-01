@@ -1,0 +1,11 @@
+<div id="new-user-div">
+    <%= form_for @user do |f| %>
+        <%= f.text_field :first_name, placeholder: "Enter your first name" %><br>
+        <%= f.text_field :last_name, placeholder: "Enter your last name" %><br>
+        <%= f.password_field :password, placeholder: "Create a password" %><br><br>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm your password" %><br>
+        <%= f.text_field :email, placeholder: "youremail@example.com" %><br><br>
+        
+        <%= f.submit 'Create Account' %>
+    <% end %>
+</div>

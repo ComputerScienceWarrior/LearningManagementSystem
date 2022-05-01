@@ -1,0 +1,8 @@
+<% @tests.each do |test| %>
+    <label>Test title: </label><%= test.title %><br/>
+    <label>Course: </label><%= test.course.title %><br/>
+    <label>Questions:</label>
+    <% test.questions.each.with_index(1) do |question, num| %>
+        <%= "#{num}. #{question}" %><br/>
+    <% end %>
+<% end %>

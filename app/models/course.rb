@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-    has_many_and_belongs_to :users
+    has_and_belongs_to_many :users
     has_many :tests
 
     validates :title, uniqueness: true
