@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
     before_action :find_test, only: [:show, :edit, :update, :destroy]
+    before_action :find_course, only: [:new]
 
     def index
         @tests = Test.all
@@ -41,10 +42,14 @@ class TestsController < ApplicationController
     private 
 
     def find_test
-        @test = Test.friendly.find(params[:test_id])
+        @test = Test.friendly.find(params[:id])
+    end
+
+    def find_course
+        @course = Course.friendly.find(params[:course_id])
     end
 
     def test_params
-        params.permit(:test).require(:title, :questions, :course_id, :user_id)
+        params.require(:test).permit(:title, :course_id, :user_id, :questions)
     end
 end
