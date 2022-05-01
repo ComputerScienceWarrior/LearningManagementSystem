@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
   
-  resources :users
-  resources :courses
-  resources :tests
-
   resources :users do
+    resources :tests
     resources :courses
   end
   
-  resources :users do
+  resources :courses do
     resources :tests
   end
+  
+  resources :tests
 
   get 'login', to: 'sessions#login'
   post 'login', to: 'sessions#create'
