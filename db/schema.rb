@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_075255) do
+ActiveRecord::Schema.define(version: 2022_05_16_030336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,20 @@ ActiveRecord::Schema.define(version: 2022_04_18_075255) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.text "header"
+    t.text "options", default: [], array: true
+    t.text "answer"
+    t.text "question_type"
+    t.integer "test_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_questions_on_slug", unique: true
+  end
+
   create_table "tests", force: :cascade do |t|
     t.text "title"
-    t.text "questions", default: [], array: true
     t.integer "course_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
