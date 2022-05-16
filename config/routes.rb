@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :tests
   end
   
-  resources :tests
+  resources :tests do
+    resources :questions
+  end
 
   get 'login', to: 'sessions#login'
   post 'login', to: 'sessions#create'
