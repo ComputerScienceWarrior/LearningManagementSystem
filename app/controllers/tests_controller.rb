@@ -50,6 +50,6 @@ class TestsController < ApplicationController
     end
 
     def test_params
-        params.require(:test).permit(:title, :course_id, :user_id, :questions)
+        params.require(:test).permit(:title, :course_id, :user_id)
     end
 end
