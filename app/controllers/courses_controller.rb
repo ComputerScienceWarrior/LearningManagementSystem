@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
     before_action :find_course, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, only: [:new]
     
     def index
         @courses = Course.all
@@ -12,10 +13,10 @@ class CoursesController < ApplicationController
         @course = Course.new
     end
 
-    def create
-        @course = Course.new(course_params)
+    def create  
+        @course = current_user.courses.new(course_params)
         if @course.save
-            redirect_to course_path(@course)
+            redirect_to user_course_path(current_user, @course)
             flash[:success] = 'Course successfully created!'
         else
             render :new
@@ -44,6 +45,10 @@ class CoursesController < ApplicationController
 
     def find_course
         @course = Course.friendly.find(params[:id])
+    end
+
+    def find_user
+        @user = User.friendly.find(params[:user_id])
     end
 
     def course_params
