@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params)
+            @user.update(slug: @user.full_name.parameterize)
             redirect_to user_path(@user)
         else
             render :edit
