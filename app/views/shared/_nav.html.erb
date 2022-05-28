@@ -3,6 +3,7 @@
         <% if !logged_in? %>
             <li><%= link_to 'Home', root_path %>/<%= link_to 'Sign Up', new_user_path %></li>
         <% end %>
+            <li><%= link_to 'All Courses', all_courses_path %></li>
             <li><%= link_to 'My Courses', user_courses_path(current_user) %></li>
             <li><%= link_to 'My Profile', user_path(current_user) %></li>
     </ul>
