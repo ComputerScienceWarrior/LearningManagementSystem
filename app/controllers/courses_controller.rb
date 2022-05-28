@@ -1,9 +1,9 @@
 class CoursesController < ApplicationController
     before_action :find_course, only: [:show, :edit, :update, :destroy]
-    before_action :find_user, only: [:new]
+    before_action :find_user, only: [:index, :new]
     
     def index
-        @courses = Course.all
+        @courses = @user.courses.all
     end
 
     def show

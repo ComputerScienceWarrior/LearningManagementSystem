@@ -1,3 +1,4 @@
+<%= render 'shared/nav' %>
 <%= form_for :test, method: :post, url: tests_path do |f| %>
     <%= f.text_field :title, placeholder: "Enter Test title" %><br/>
     <%= f.submit %>

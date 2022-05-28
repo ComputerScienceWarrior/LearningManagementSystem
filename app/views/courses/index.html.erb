@@ -1,3 +1,4 @@
+<%= render 'shared/nav' %>
 <% @courses.each.with_index(1) do |course, i| %>
     <%= i %>.<%= link_to course.title, course_path(course) %>
 <% end %>

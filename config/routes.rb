@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#logout'
 
   root 'sessions#login'
+  get '*path' => redirect('/')
 end
