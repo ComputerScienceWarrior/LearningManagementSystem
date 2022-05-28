@@ -1,4 +1,4 @@
 <%= render 'shared/nav' %>
 <%= @course.title %> on the show page.<br/>
 <label>Create new tests for the course</label></br>
-<%= link_to 'Create Test', new_course_test_path(@course) %>
+<%= link_to 'Create Test', new_course_test_path(@course) if course_is_users?(@course, current_user) %>
