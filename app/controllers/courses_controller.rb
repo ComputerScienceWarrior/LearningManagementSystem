@@ -6,6 +6,10 @@ class CoursesController < ApplicationController
         @courses = @user.courses.all
     end
 
+    def all_courses
+        @courses = Course.all
+    end
+
     def show
     end
 

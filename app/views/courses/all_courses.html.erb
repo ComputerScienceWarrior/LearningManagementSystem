@@ -1,0 +1,6 @@
+<%= render 'shared/nav' %>
+<div>
+    <% @courses.each.with_index(1) do |course, i| %>
+        <div><%= i %>.<%= link_to course.title, course_path(course) %></div>
+    <% end %>
+</div>
