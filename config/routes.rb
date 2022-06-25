@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :tests
     resources :courses
+    get 'enrolled', to: 'users#enrolled'
   end
   
   resources :courses do
