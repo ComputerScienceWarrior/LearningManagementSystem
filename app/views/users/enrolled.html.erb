@@ -1,0 +1,9 @@
+<%= render 'shared/nav' %>
+<% if @users_courses.length() == 0 %>
+    <h1>Not currently enrolled in any courses!</h1>
+<% else %>
+    <% @users_courses.each.with_index(1) do |c, i| %>
+        <% course = course(c) %>
+        <%= i %>. <%= link_to course.title, course_path(course) %>
+    <% end %>
+<% end %>
