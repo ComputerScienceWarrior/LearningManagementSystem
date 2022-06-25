@@ -6,4 +6,8 @@ module CoursesHelper
     def user_enrolled?(course, student)
         course.students.include? student.id
     end
+
+    def course(course)
+        Course.find(course)
+    end
 end
