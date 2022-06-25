@@ -48,7 +48,7 @@ class CoursesController < ApplicationController
     #enroll a user in course the course
     def enroll
         @course.students << current_user.id
-        current_user.enrolled_courses << @course.id
+        current_user.update(enrolled_courses: [*current_user.enrolled_courses, @course.id])
         redirect_to course_path(@course)
     end
 
@@ -63,6 +63,6 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-        params.require(:course).permit(:title, :subject, :description, :user_id)
+        params.require(:course).permit(:title, :subject, :description, :students, :user_id)
     end
 end
