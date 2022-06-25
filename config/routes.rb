@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   end
   
   resources :courses do
+    get 'enroll', to: 'courses#enroll'
     resources :tests
   end
   get 'all_courses', to: 'courses#all_courses'
-  get 'enroll', to: 'courses#enroll'
   
   resources :tests do
     resources :questions
