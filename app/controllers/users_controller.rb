@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, only: [:show, :edit, :update, :destroy, :enrolled]
 
     def index
         @user = User.all
@@ -39,13 +39,17 @@ class UsersController < ApplicationController
         redirect_to root_path
     end
 
+    def enrolled
+        @users_courses = current_user.enrolled_courses
+    end
+
     private
 
     def find_user
-        @user = User.friendly.find(params[:id])
+        @user = User.friendly.find(params[:id] || params[:user_id])
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :grade, :gpa, :course_id)
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :grade, :gpa, :enrolled_courses, :course_id)
     end
 end
