@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-    before_action :find_course, only: [:show, :edit, :update, :destroy]
+    before_action :find_course, only: [:show, :edit, :update, :destroy, :enroll]
     before_action :find_user, only: [:index, :new]
     
     def index
@@ -45,10 +45,17 @@ class CoursesController < ApplicationController
         redirect_to user_path(current_user)
     end
 
+    #enroll a user in course the course
+    def enroll
+        @course.students << current_user.id
+        current_user.enrolled_courses << @course.id
+        redirect_to course_path(@course)
+    end
+
     private 
 
     def find_course
-        @course = Course.friendly.find(params[:id])
+        @course = Course.friendly.find(params[:id] || params[:course_id])
     end
 
     def find_user
